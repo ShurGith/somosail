@@ -18,7 +18,7 @@
                         <div><span x-text="splitea(dato.created_at)[1]"></span><span> - </span><span x-text="splitea(dato.created_at)[2]"></span></div>
                     </time>
                 </div>
-                <div class="h-52 col-span-4 bg-cover bg-center" :style="`background-image:url('/images/posts/${dato.image}')`"></div>
+                <div class="h-52 col-span-4 bg-cover bg-center" :style="`background-image:url('storage/images/posts/${dato.image}')`"></div>
                 <div class="flex flex-1 flex-col col-span-7 justify-between">
                     <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
                     <a :href="`/show/${dato.id}`">
@@ -30,7 +30,7 @@
                         <template x-for="cat in dato.categories">
                             <div class="w-fit min-w-20 rounded ease-linear duration-300 hover:shadow-lg shadow shadow-black" :style="`background-color:${cat.primary_color}`">
                             <a :href="`/category/${cat.id}`" class="flex pl-2 text-white justify-start items-center gap-2">
-                            <img :src="`images/logos/${cat.logo}`" class="max-w-4 max-h-4">
+                            <img :src="`storage/images/logos/${cat.logo}`" class="max-w-4 max-h-4">
                             <h4 x-text="cat.name" class="text-xs text-white leading-8"></h4>
                             </a>
                             </div>

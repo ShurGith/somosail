@@ -31,7 +31,16 @@ class PaginaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fileName = $request->file_image->getClientOriginalName().' '.time().'.'.$request->file_image->extension();
+        $request->file_image->move(public_path('images/posts/'), $fileName);
+        $post = Post::create([
+            'title' => $request->titulo,
+            'excerpt' => $request->excerpt,
+            'image'=> $fileName,
+            'content' => $request->content,
+            'is_published' => 1,//$request->is_published,
+            'autor_id' =>  $request->user_id,
+        ]);
     }
 
     /**

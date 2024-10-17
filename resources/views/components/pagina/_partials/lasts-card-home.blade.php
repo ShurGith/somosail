@@ -8,7 +8,7 @@
         @foreach ($datos as $post)
 
         {{-- {{ dd($datos) }} --}}
-        <article class="article-last relative isolate flex flex-col justify-end items-center overflow-hidden rounded-2xl bg-gray-900 px-8 bg-cover min-h-64 bg-center" style="background-image:url({{ asset('images/posts/'.$post->image) }})">
+        <article class="article-last relative isolate flex flex-col justify-end items-center overflow-hidden rounded-2xl bg-gray-900 px-8 bg-cover min-h-64 bg-center" style="background-image:url({{ asset('storage/images/posts/'.$post->image) }})">
             <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/80"></div>
             <div class="absolute inset-0 -z-10 rounded-2xl t ring-gray-900/40"></div>
 
@@ -32,12 +32,12 @@
                         <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
                         <circle cx="1" cy="1" r="1" />
                         </svg>
-                        <img src="{{ asset('images/users/'.$post->user->profile_photo_path) }}" alt="{{ $post->title.' creator photo profile' }}" class="h-6 w-6 flex-none rounded-full bg-white/10">
+                        <img src="{{ asset('storage/images/users/'.$post->user->profile_photo_path) }}" alt="{{ $post->title.' creator photo profile' }}" class="h-6 w-6 flex-none rounded-full bg-white/10">
                         {{ $post->user->name }}
                         @endisset
                     </div>
                     <div class="px-2 py-1 flex gap-2 w-fit rounded" style="background-color:{{ $categoria->primary_color }}">
-                        <img class="h-6 w-6" src="{{asset('images/logos/'.$categoria->logo) }}">
+                        <img class="h-6 w-6" src="{{asset('storage/images/logos/'.$categoria->logo) }}">
                         <p class="text-white">{{ $categoria->name }}</p>
                     </div>
                 <div>
