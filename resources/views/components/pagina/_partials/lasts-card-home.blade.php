@@ -25,16 +25,12 @@
                     </a>
                 </h3>
                 <div class="trasladada text-white flex flex-col gap-y-6 place-items-center translate-y-44 transition-transform duration-500 ">
-                    <div class="flex gap-y-1 mt-2 overflow-hidden text-sm leading-6 text-gray-300">
-                        <time datetime="2020-03-16" class="mr-8">{{  $post->created_at->format('d - M - Y') }}</time>
-                        @isset($post->user)
+                    <div class="flex justify-center items-center gap-x-2 mt-2 overflow-hidden text-sm  text-white">
+                        <time datetime="2020-03-16" class="">{{  $post->created_at->format('d - M - Y') }}</time>
 
-                        <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
-                        <circle cx="1" cy="1" r="1" />
-                        </svg>
-                        <img src="{{ asset('storage/images/users/'.$post->user->profile_photo_path) }}" alt="{{ $post->title.' creator photo profile' }}" class="h-6 w-6 flex-none rounded-full bg-white/10">
+                        <div class="w-4 h-px bg-white"></div>
+                        <img src="{{ asset('storage/images/users/'.$post->user->profile_photo_path) }}" alt="{{ $post->title.' creator photo profile' }}" class="h-6 w-6 flex-none rounded-full">
                         {{ $post->user->name }}
-                        @endisset
                     </div>
                     <div class="px-2 py-1 flex gap-2 w-fit rounded" style="background-color:{{ $categoria->primary_color }}">
                         <img class="h-6 w-6" src="{{asset('storage/images/logos/'.$categoria->logo) }}">

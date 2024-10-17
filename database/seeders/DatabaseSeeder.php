@@ -23,28 +23,32 @@ class DatabaseSeeder extends Seeder
             'name' => 'Laravel',
             'logo' => 'laravel-logo.svg',
             'ico' => 'ti-brand-laravel',
-            'logo_color'=>'#fff',
-            'primary_color' => 'orange-500',
-            'secondary_color' => 'orange-500',
+            'logo_color'=>'white',
+            'primary_color' => '#FF2D20',
+            'secondary_color' => '#FF2D2080',
         ]);
 
         DB::table('categories')->insert([
             'name' => 'PHP',
             'logo' => 'php-logo.svg',
             'ico' => 'ti-file-type-php',
-            'logo_color'=>'#fff',
-            'primary_color' => 'blue-700',
-            'secondary_color' => 'blue-700',
+            'logo_color'=>'white',
+            'primary_color' => '#777BB4',
+            'secondary_color' => '777BB480',
         ]);
 
         DB::table('categories')->insert([
             'name' => 'vsc',
             'logo' => 'vsc-logo.svg',
             'ico' => 'ti-brand-vscode',
-            'logo_color'=>'#fff',
-            'primary_color' => 'blue-500',
-            'secondary_color' => 'blue-500',
+            'logo_color'=>'white',
+            'primary_color' => '#2F80E',
+            'secondary_color' => '#E34F2680',
         ]);
+
+
+
+
         User::factory(10)->withPersonalTeam()->create();
 
         User::factory()->withPersonalTeam()->create([

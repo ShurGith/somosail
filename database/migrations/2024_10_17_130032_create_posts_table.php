@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->string('excerpt');
+            $table->string('image')->default('default_image.png');
+            $table->boolean('is_published')->default(true);
+            $table->unsignedBigInteger('autor_id');
             $table->timestamps();
+            $table->foreign('autor_id')->references('id')->on('users');
         });
     }
 

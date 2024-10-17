@@ -33,7 +33,7 @@ class PostController extends Controller
 
         // return redirect()->action([ComunidadController::class, 'create']);
         // return back()->withInput();
-        return redirect('/create')->with('status', 'Post Añadido Correctamente!');
+        return redirect('/create')->warningBanner('Subscription pending approval.');
     }
 
     public function create()

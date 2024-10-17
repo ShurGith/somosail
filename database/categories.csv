@@ -1,0 +1,8 @@
+id,name,logo,ico,logo_color,primary_color,secondary_color,created_at,updated_at
+1,Laravel,laravel-logo.svg,ti-brand-laravel,white,#FF2D20,#FF2D2080,,
+2,php,php-logo.svg,ti-file-type-php,white,#777BB4,#777BB480,,
+3,vsc,vsc-logo.svg,ti-brand-vscode,white,#2F80ED,#2F80ED80,,
+4,html,html5.svg,ti-brand-html5,white,#E34F26,#E34F2680,,
+5,css,css3.svg,ti-brand-css3,white,#1572B6,#1572B680,,
+6,django,django.svg,ti-brand-django,white,#092E20,#092E2080,,
+7,python,python.svg,ti-brand-python,white,#3776AB,#3776AB80,,
