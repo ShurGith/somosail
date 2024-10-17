@@ -1,7 +1,7 @@
 
 <x-app-layout>
 <section class="flex items-center justify-center">
-    <form method="POST" action="{{ route('comunidad.store') }}" enctype="multipart/form-data" class="md:w-3/4 flex flex-col justify-center items-center mt-4">
+    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="md:w-3/4 flex flex-col justify-center items-center mt-4">
         @csrf
         {{-- @if (session('status')) --}}
         <div class="rounded-md w-3/4 bg-green-50 p-4">

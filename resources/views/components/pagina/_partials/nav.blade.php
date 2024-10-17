@@ -37,7 +37,7 @@
                                     <button type="button" class="relative flex max-w-xs items-center rounded-full" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                         <span class="absolute -inset-1.5"></span>
                                         <span class="sr-only">Open user menu</span>
-                                        <img class="h-8 w-8 rounded-full" src="{{ asset('images/users/default.png') }}" alt="">
+                                        <img class="h-8 w-8 rounded-full" src="{{ asset('storage/images/users/default.png') }}" alt="">
                                     </button>
                                 @else
                                     <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition text-sm hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white" >

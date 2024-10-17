@@ -17,31 +17,6 @@ class PaginaController extends Controller
         return view('show',compact('posts', 'posts_lasts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $categs = Category::all();
-        return view('components.pagina.gestion.create', compact('categs'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $fileName = $request->file_image->getClientOriginalName().' '.time().'.'.$request->file_image->extension();
-        $request->file_image->move(public_path('images/posts/'), $fileName);
-        $post = Post::create([
-            'title' => $request->titulo,
-            'excerpt' => $request->excerpt,
-            'image'=> $fileName,
-            'content' => $request->content,
-            'is_published' => 1,//$request->is_published,
-            'autor_id' =>  $request->user_id,
-        ]);
-    }
 
     /**
      * Display the specified resource.
@@ -51,29 +26,7 @@ class PaginaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Post $post)
-    {
-        //
-    }
     public function categs()
     {
         $categs = Category::get();
