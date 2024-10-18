@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css " rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/css/css.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
 </head>

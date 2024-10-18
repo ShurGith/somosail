@@ -1,7 +1,7 @@
 <header class="bg-white shadow">
     <div class="mx-auto flex justify-start gap-24 max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div class="max-w-fit px-4 py-1 rounded flex items-center gap-2" style="background-color:{{ $datos->primary_color }}">
-            <img src="{{ asset('images/logos/'.$datos->logo) }}" class="max-w-10">
+            <img src="{{ asset('storage/images/logos/'.$datos->logo) }}" class="max-w-10">
             <h1 class="text-3xl font-bold tracking-tig text-{{ $datos->logo_color }}">{{ $datos->name }}</h1>
         </div>
         <a class="bg-slate-300 boton-amarillo" href="{{ route('pagina.categs') }}">{{ __('Categs') }}</a>
@@ -28,7 +28,7 @@
     @foreach ($posts as $post)
         <div class="relative">
             <div class="absolute w-full h-full top-0 left-0 border-2 border-black border-dashed rounded-lg"></div>
-            <div class="div-categ w-full h-full relative flex min-h-40 flex-col justify-between px-6 py-4 bg-white rounded-lg bg-center bg-no-repeat bg-cover shadow transition-all ease-in-out duration-500 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-black" style="background-image:linear-gradient(to bottom,rgba(0, 0, 0,.7), {{ $datos->secondary_color }} ),url('{{ asset('images/posts/'.$post->image ) }}')">
+            <div class="div-categ w-full h-full relative flex min-h-40 flex-col justify-between px-6 py-4 bg-white rounded-lg bg-center bg-no-repeat bg-cover shadow transition-all ease-in-out duration-500 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-black" style="background-image:linear-gradient(to bottom,rgba(0, 0, 0,.7), {{ $datos->secondary_color }} ),url('{{ asset('storage/images/posts/'.$post->image ) }}')">
                 <div>
                     <h3 class="font-bold text-white text-xl z-10">{{ $post->title }}</h3>
                     <p class=" mt-1 text-white text-sm z-10">{{ $post->excerpt }}</p>

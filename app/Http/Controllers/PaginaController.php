@@ -21,10 +21,7 @@ class PaginaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
-    {
-        //
-    }
+
 
 
     public function categs()
@@ -35,6 +32,19 @@ class PaginaController extends Controller
                     'grupo'=>'categs',
                     'datos' => $categs]);
     }
+
+    public function category_simple($id)
+    {
+        $categ = Category::find($id);
+        $posts = $categ->posts;
+        return view('home',
+                    ['pagina' => 'Categ',
+                    'grupo'=>'category',
+                    'titulo' => true,
+                    'datos' => $categ,
+                    'posts' => $posts]);
+    }
+
     public function home(Request $request)
     {
         $pagina = "home";

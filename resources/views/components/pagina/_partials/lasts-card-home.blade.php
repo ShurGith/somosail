@@ -17,6 +17,7 @@
                     $categoria = App\Models\Category::find($info->pivot->category_id);
                 @endphp
             @endforeach
+
             <div class="relative mb-12 text-center">
                 <h3 class="text-lg font-semibold leading-6 text-white">
                     <a href="{{ route('pagina.show', $post) }}">

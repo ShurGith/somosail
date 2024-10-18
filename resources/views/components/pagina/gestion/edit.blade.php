@@ -1,13 +1,15 @@
 
 <x-app-layout>
 <section class="flex items-center justify-center">
-    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="sm:w-3/4 flex flex-col justify-center items-center mt-4 relative">
+    <form method="POST" action="{{ route('post.update', $post->id) }}" enctype="multipart/form-data" class="sm:w-3/4 flex flex-col justify-center items-center mt-4 relative">
         @csrf
+        @method('PUT')
 
-        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+        {{-- <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}"> --}}
         <div class="flex flex-col w-full px-4 md:w-3/4 ">
-            <label for="titulo" class="font-medium text-gray-700">{{ __('Titulo')}}</label>
-            <input type="text" name="titulo" id="titulo" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Titulo') }}"  value="{{ old('titulo') }}">
+            <label for="titulo" class="font-bold text-gray-700">{{ __('Titulo')}}</label>
+            <input type="text" name="titulo" id="titulo" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Titulo') }}"
+            value="{{old('titulo', $post->title)}}">
             @error('titulo')
             <div class="text-red-500 flex gap-2 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Alert-Line--Streamline-Mingcute" height="32" width="32"><desc>Alert Line Streamline Icon: https://streamlinehq.com</desc><g fill="none" fill-rule="nonzero"><path d="M32 0v32H0V0h32ZM16.790666666666667 31.010666666666665l-0.014666666666666665 0.0026666666666666666 -0.09466666666666665 0.04666666666666667 -0.026666666666666665 0.005333333333333333 -0.018666666666666665 -0.005333333333333333 -0.09466666666666665 -0.04666666666666667c-0.013333333333333332 -0.005333333333333333 -0.025333333333333333 -0.0013333333333333333 -0.032 0.006666666666666666l-0.005333333333333333 0.013333333333333332 -0.02266666666666667 0.5706666666666667 0.006666666666666666 0.026666666666666665 0.013333333333333332 0.017333333333333333 0.13866666666666666 0.09866666666666665 0.019999999999999997 0.005333333333333333 0.016 -0.005333333333333333 0.13866666666666666 -0.09866666666666665 0.016 -0.021333333333333333 0.005333333333333333 -0.02266666666666667 -0.02266666666666667 -0.5693333333333332c-0.0026666666666666666 -0.013333333333333332 -0.011999999999999999 -0.02266666666666667 -0.02266666666666667 -0.023999999999999997Zm0.35333333333333333 -0.15066666666666667 -0.017333333333333333 0.0026666666666666666 -0.24666666666666665 0.124 -0.013333333333333332 0.013333333333333332 -0.004 0.014666666666666665 0.023999999999999997 0.5733333333333333 0.006666666666666666 0.016 0.010666666666666666 0.009333333333333332 0.268 0.124c0.016 0.005333333333333333 0.030666666666666665 0 0.03866666666666667 -0.010666666666666666l0.005333333333333333 -0.018666666666666665 -0.04533333333333334 -0.8186666666666667c-0.004 -0.016 -0.013333333333333332 -0.026666666666666665 -0.026666666666666665 -0.02933333333333333Zm-0.9533333333333333 0.0026666666666666666a0.030666666666666665 0.030666666666666665 0 0 0 -0.036 0.008l-0.008 0.018666666666666665 -0.04533333333333334 0.8186666666666667c0 0.016 0.009333333333333332 0.026666666666666665 0.02266666666666667 0.032l0.019999999999999997 -0.0026666666666666666 0.268 -0.124 0.013333333333333332 -0.010666666666666666 0.005333333333333333 -0.014666666666666665 0.02266666666666667 -0.5733333333333333 -0.004 -0.016 -0.013333333333333332 -0.013333333333333332 -0.24533333333333332 -0.12266666666666666Z" stroke-width="1"></path><path fill="#f00" d="m17.732 4.197333333333333 11.512 19.938666666666666a2 2 0 0 1 -1.7319999999999998 3H4.4879999999999995a2 2 0 0 1 -1.7319999999999998 -3l11.512 -19.938666666666666c0.7693333333333332 -1.3333333333333333 2.6933333333333334 -1.3333333333333333 3.4639999999999995 0ZM16 6.530666666666666 5.642666666666667 24.46933333333333h20.714666666666666L16 6.530666666666666ZM16 20a1.3333333333333333 1.3333333333333333 0 1 1 0 2.6666666666666665 1.3333333333333333 1.3333333333333333 0 0 1 0 -2.6666666666666665Zm0 -9.333333333333332a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 1.3333333333333333v5.333333333333333a1.3333333333333333 1.3333333333333333 0 1 1 -2.6666666666666665 0V12a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 -1.3333333333333333Z" stroke-width="1"></path></g></svg>
@@ -15,17 +17,45 @@
             @enderror
         </div>
         <div class="flex flex-col w-full px-4 md:w-3/4 mt-4">
-            <label for="excerpt" class="font-medium text-gray-700">{{ __('Extracto')}}</label>
-            <input type="text" name="excerpt" id="excerpt" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Extracto') }}" value="{{ old('excerpt') }}">
+            <label for="excerpt" class="font-bold text-gray-700">{{ __('Extracto')}}</label>
+            <input type="text" name="excerpt" id="excerpt" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Extracto') }}" value="{{ old('excerpt', $post->excerpt) }}">
             @error('excerpt')
             <div class="text-red-500 flex gap-2 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Alert-Line--Streamline-Mingcute" height="32" width="32"><desc>Alert Line Streamline Icon: https://streamlinehq.com</desc><g fill="none" fill-rule="nonzero"><path d="M32 0v32H0V0h32ZM16.790666666666667 31.010666666666665l-0.014666666666666665 0.0026666666666666666 -0.09466666666666665 0.04666666666666667 -0.026666666666666665 0.005333333333333333 -0.018666666666666665 -0.005333333333333333 -0.09466666666666665 -0.04666666666666667c-0.013333333333333332 -0.005333333333333333 -0.025333333333333333 -0.0013333333333333333 -0.032 0.006666666666666666l-0.005333333333333333 0.013333333333333332 -0.02266666666666667 0.5706666666666667 0.006666666666666666 0.026666666666666665 0.013333333333333332 0.017333333333333333 0.13866666666666666 0.09866666666666665 0.019999999999999997 0.005333333333333333 0.016 -0.005333333333333333 0.13866666666666666 -0.09866666666666665 0.016 -0.021333333333333333 0.005333333333333333 -0.02266666666666667 -0.02266666666666667 -0.5693333333333332c-0.0026666666666666666 -0.013333333333333332 -0.011999999999999999 -0.02266666666666667 -0.02266666666666667 -0.023999999999999997Zm0.35333333333333333 -0.15066666666666667 -0.017333333333333333 0.0026666666666666666 -0.24666666666666665 0.124 -0.013333333333333332 0.013333333333333332 -0.004 0.014666666666666665 0.023999999999999997 0.5733333333333333 0.006666666666666666 0.016 0.010666666666666666 0.009333333333333332 0.268 0.124c0.016 0.005333333333333333 0.030666666666666665 0 0.03866666666666667 -0.010666666666666666l0.005333333333333333 -0.018666666666666665 -0.04533333333333334 -0.8186666666666667c-0.004 -0.016 -0.013333333333333332 -0.026666666666666665 -0.026666666666666665 -0.02933333333333333Zm-0.9533333333333333 0.0026666666666666666a0.030666666666666665 0.030666666666666665 0 0 0 -0.036 0.008l-0.008 0.018666666666666665 -0.04533333333333334 0.8186666666666667c0 0.016 0.009333333333333332 0.026666666666666665 0.02266666666666667 0.032l0.019999999999999997 -0.0026666666666666666 0.268 -0.124 0.013333333333333332 -0.010666666666666666 0.005333333333333333 -0.014666666666666665 0.02266666666666667 -0.5733333333333333 -0.004 -0.016 -0.013333333333333332 -0.013333333333333332 -0.24533333333333332 -0.12266666666666666Z" stroke-width="1"></path><path fill="#f00" d="m17.732 4.197333333333333 11.512 19.938666666666666a2 2 0 0 1 -1.7319999999999998 3H4.4879999999999995a2 2 0 0 1 -1.7319999999999998 -3l11.512 -19.938666666666666c0.7693333333333332 -1.3333333333333333 2.6933333333333334 -1.3333333333333333 3.4639999999999995 0ZM16 6.530666666666666 5.642666666666667 24.46933333333333h20.714666666666666L16 6.530666666666666ZM16 20a1.3333333333333333 1.3333333333333333 0 1 1 0 2.6666666666666665 1.3333333333333333 1.3333333333333333 0 0 1 0 -2.6666666666666665Zm0 -9.333333333333332a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 1.3333333333333333v5.333333333333333a1.3333333333333333 1.3333333333333333 0 1 1 -2.6666666666666665 0V12a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 -1.3333333333333333Z" stroke-width="1"></path></g></svg>
-               {{ $message }}</div>
-            @enderror
+                {{ $message }}</div>
+                @enderror
+            </div>
+<!-- USUARIOS y PUBLICADO -->
+
+        <div class="flex w-full px-4 md:w-3/4 mt-4">
+            <div class="flex flex-col w-full px-4 md:w-1/4 mt-4">
+                <label for="publicado" class="font-bold text-gray-700">{{ __('Publicado')}}</label>
+                <input type="checkbox" name="publicado" {{ $post->is_published ? 'checked' : "" }}>
+            </div>
+            <div class="flex flex-col w-full px-4 md:w-3/4 mt-4">
+                <label for="user_id" class="font-bold text-gray-700">{{ __('User')}}</label>
+                {{ $post->user->name}}<br>{{ $post->user->id }}
+                <select name="user_id">
+                    @foreach ($usuarios as $user)
+                        <option value="{{ $user->id }}" {{ ($post->user->id == $user->id) ? 'selected':''}}>{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
-        <div class="flex flex-col px-4 md:w-3/4 mt-4">
-            <label for="image-file" class="font-medium text-gray-700">{{ __('Imagen Predeterminada')}}</label>
-            <input type="file" name="file_image" id="file_image" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)]">
+<!-- USUARIOS Y PUBLICADO-->
+            <div class="flex flex-col px-4 md:w-3/4 mt-4 ">
+                <label for="image-file" class="font-bold text-gray-700">{{ __('Imagen Predeterminada')}}</label>
+            <div class="flex justify-between items-center w-full">
+            <input type="file" name="file_image" id="file_image" class="py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)]">
+            <div class="text-center opacity-0">
+                <p class="font-bold">Nueva Imagen</p>
+                <img id="imgSelected" class="max-w-48" src="">
+            </div>
+            <div class="text-center">
+                <p class="font-bold">Imagen Actual</p>
+                <img class="max-w-48" src="{{ asset('storage/images/posts/'.$post->image) }}">
+            </div>
+        </div>
             @error('file_image')
             <div class="text-red-500 flex gap-2 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Alert-Line--Streamline-Mingcute" height="32" width="32"><desc>Alert Line Streamline Icon: https://streamlinehq.com</desc><g fill="none" fill-rule="nonzero"><path d="M32 0v32H0V0h32ZM16.790666666666667 31.010666666666665l-0.014666666666666665 0.0026666666666666666 -0.09466666666666665 0.04666666666666667 -0.026666666666666665 0.005333333333333333 -0.018666666666666665 -0.005333333333333333 -0.09466666666666665 -0.04666666666666667c-0.013333333333333332 -0.005333333333333333 -0.025333333333333333 -0.0013333333333333333 -0.032 0.006666666666666666l-0.005333333333333333 0.013333333333333332 -0.02266666666666667 0.5706666666666667 0.006666666666666666 0.026666666666666665 0.013333333333333332 0.017333333333333333 0.13866666666666666 0.09866666666666665 0.019999999999999997 0.005333333333333333 0.016 -0.005333333333333333 0.13866666666666666 -0.09866666666666665 0.016 -0.021333333333333333 0.005333333333333333 -0.02266666666666667 -0.02266666666666667 -0.5693333333333332c-0.0026666666666666666 -0.013333333333333332 -0.011999999999999999 -0.02266666666666667 -0.02266666666666667 -0.023999999999999997Zm0.35333333333333333 -0.15066666666666667 -0.017333333333333333 0.0026666666666666666 -0.24666666666666665 0.124 -0.013333333333333332 0.013333333333333332 -0.004 0.014666666666666665 0.023999999999999997 0.5733333333333333 0.006666666666666666 0.016 0.010666666666666666 0.009333333333333332 0.268 0.124c0.016 0.005333333333333333 0.030666666666666665 0 0.03866666666666667 -0.010666666666666666l0.005333333333333333 -0.018666666666666665 -0.04533333333333334 -0.8186666666666667c-0.004 -0.016 -0.013333333333333332 -0.026666666666666665 -0.026666666666666665 -0.02933333333333333Zm-0.9533333333333333 0.0026666666666666666a0.030666666666666665 0.030666666666666665 0 0 0 -0.036 0.008l-0.008 0.018666666666666665 -0.04533333333333334 0.8186666666666667c0 0.016 0.009333333333333332 0.026666666666666665 0.02266666666666667 0.032l0.019999999999999997 -0.0026666666666666666 0.268 -0.124 0.013333333333333332 -0.010666666666666666 0.005333333333333333 -0.014666666666666665 0.02266666666666667 -0.5733333333333333 -0.004 -0.016 -0.013333333333333332 -0.013333333333333332 -0.24533333333333332 -0.12266666666666666Z" stroke-width="1"></path><path fill="#f00" d="m17.732 4.197333333333333 11.512 19.938666666666666a2 2 0 0 1 -1.7319999999999998 3H4.4879999999999995a2 2 0 0 1 -1.7319999999999998 -3l11.512 -19.938666666666666c0.7693333333333332 -1.3333333333333333 2.6933333333333334 -1.3333333333333333 3.4639999999999995 0ZM16 6.530666666666666 5.642666666666667 24.46933333333333h20.714666666666666L16 6.530666666666666ZM16 20a1.3333333333333333 1.3333333333333333 0 1 1 0 2.6666666666666665 1.3333333333333333 1.3333333333333333 0 0 1 0 -2.6666666666666665Zm0 -9.333333333333332a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 1.3333333333333333v5.333333333333333a1.3333333333333333 1.3333333333333333 0 1 1 -2.6666666666666665 0V12a1.3333333333333333 1.3333333333333333 0 0 1 1.3333333333333333 -1.3333333333333333Z" stroke-width="1"></path></g></svg>
@@ -39,8 +69,8 @@
                 <div class="grid grid-cols-3 gap-2 md:grid-cols-4">
                 @foreach ($categs as $cat)
                 <div class="flex items-center gap-2">
-                    <input id="cat_{{ $cat->id }}" name="category_id" value="{{ $cat->id }}"  type="radio" class="h-4 w-4 cursor-pointer border-gray-300 text-indigo-600 focus:ring-indigo-600">
-                    <label for="cat_{{ $cat->id }}" class="block cursor-pointer text-sm font-medium leading-6 text-gray-900">{{ strtoupper($cat->name) }}</label>
+                    <input id="cat_{{ $cat->id }}" name="category_id" value="{{ $cat->id }}" {{ ($post->categories[0]->id == $cat->id)? "checked": "" }}  type="radio" class="h-4 w-4 cursor-pointer border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <label for="cat_{{ $cat->id }}" class="block cursor-pointer text-sm font-bold leading-6 text-gray-900">{{ strtoupper($cat->name) }}</label>
                 </div>
                 @endforeach
                 </div>
@@ -58,7 +88,7 @@
                         <svg class="h-6 w-6 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
                         </svg>
-                        <h3 class="text-lg font-medium text-green-800">Post Añadido correctamente</h3>
+                        <h3 class="text-lg font-medium text-green-800">Post Editado Correctamente</h3>
                     </div>
                     <p class="mt-2 -sm text-green-700">El post ha sido añadido de manera correcta en el sistema y está disponible para la visualización.</p>
                 </div>
@@ -67,9 +97,9 @@
         <div class="w-fitcontent px-4 md:w-3/4 mt-4 justify-start items-start gap-1 flex">
             <div class="w-full justify-start items-start gap-1.5 flex flex-col">
                 <div class="justify-start items-center gap-1 inline-flex">
-                    <span class="text-gray-600 font-medium leading-7">{{ __('Contenido del Post') }}</span>
+                    <span class="text-gray-600 font-bold leading-7">{{ __('Contenido del Post') }}</span>
                 </div>
-                <textarea id="contenidoPost" name="content" id="content" rows="4" class="w-full py-2.5 px-4 rounded-lg focus:outline-none border border-gray-200 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 font-normal leading-8 resize-none" placeholder="{{ __('Contenido del Post') }} . . ." >{{ old('content') }}</textarea>
+                <textarea id="contenidoPost" name="content" id="content" rows="4" class="w-full py-2.5 px-4 rounded-lg focus:outline-none border border-gray-200 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 font-normal leading-8 resize-none" placeholder="{{ __('Contenido del Post') }} . . ." >{{ old('content', $post->content) }}</textarea>
             </div>
         </div>
         <div class="mt-6 flex items-center justify-end gap-x-6">
@@ -100,7 +130,6 @@
 </section>
 </x-app-layout>
 
-
 <script>
     const divSuccess = document.querySelector('#div-success')
    // const btnSuccess = document.querySelector('#btn-success');
@@ -114,4 +143,20 @@
         setTimeout(hideSuccess, 5000);
     })
 }
+
+const $seleccionArchivos = document.querySelector("#file_image"),
+  $imagenPrevisualizacion = document.querySelector("#imgSelected");
+
+$seleccionArchivos.addEventListener("change", () => {
+  const archivos = $seleccionArchivos.files;
+  if (!archivos || !archivos.length) {
+    $imagenPrevisualizacion.src = "";
+    return;
+  }
+  const primerArchivo = archivos[0];
+  const objectURL = URL.createObjectURL(primerArchivo);
+  $imagenPrevisualizacion.src = objectURL;
+  $imagenPrevisualizacion.closest('div').classList.remove('opacity-0');
+});
+
 </script>

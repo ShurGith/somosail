@@ -12,4 +12,7 @@
     .boton-amarillo{
         @apply flex place-items-center px-4 py-2 rounded text-sm ease-linear duration-300 hover:shadow-lg shadow shadow-black;
     }
+    .post-list-header{
+        @apply ml-8 text-left font-semibold text-gray-900;
+    }
 }

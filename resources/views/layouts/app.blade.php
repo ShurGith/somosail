@@ -13,7 +13,7 @@
         <script src="https://cdn.tiny.cloud/1/yq5qkuyziba3ynno0m7me42ww1dfxguiyzq2drk3xualk4fa/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/js/app.js'])
 
         <!-- Styles -->
         @livewireStyles

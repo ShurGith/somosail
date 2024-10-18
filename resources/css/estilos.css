@@ -1,0 +1,25 @@
+:root {
+    interpolate-size: allow-keywords;
+}
+
+.block-card{
+    transition:.3s ease-in-out all;
+
+}
+.block-card:hover{
+    transform: translate(5px, -5px) scale(1.05);
+    box-shadow: -5px 5px;
+}
+
+.alerta-expandible{
+    top:10%;
+    position: absolute;
+    height: 0;
+    overflow: clip;
+    visibility: hidden;
+    transition: height 1s ease-out, visibility 1s;
+}
+.alerta-expandible.expandido{
+    height: auto;
+    visibility: visible;
+}
