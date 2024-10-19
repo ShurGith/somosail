@@ -7,9 +7,11 @@ use Illuminate\View\View;
 
 class AppLayout extends Component
 {
-    /**
-     * Get the view / contents that represents the component.
-     */
+
+    public function __construct(
+        public string $metaTitle = "Somos Dev" ,
+        public string $metaDescription = "Lugar de encuentro para desarrolladores Web",
+    ){}
     public function render(): View
     {
         return view('layouts.app');

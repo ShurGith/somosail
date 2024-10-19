@@ -1,5 +1,9 @@
+@props([
+    'metaTitle' => " - Listando Posts",
+])
+<x-app-layout :metaTitle="$metaTitle">
 
-<x-app-layout>
+
 <div class="sm:px-1 lg:px-8">
     <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">

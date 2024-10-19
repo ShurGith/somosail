@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{  'SomosDevs ' . $pagActual }}</title>
+    <title>{{  'SomosDevs ' . __($pagActual) }}</title>
+    <meta name="description" content="{{ $metaDescription }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
