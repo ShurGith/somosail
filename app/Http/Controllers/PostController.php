@@ -78,14 +78,15 @@ class PostController extends Controller
         'category_id' => $request->category_id,
         'user_id' => $request->user_id,
     ]);
-
-        return redirect()->back()->with('success','Post Correcto');
+        return redirect()->back()->with('success','Post Actualizado');
     }
 
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->back()->with('status','Post Elimimado');
     }
+
     public function postList(Request $request)
     {
         $posts = Post::paginate(15);

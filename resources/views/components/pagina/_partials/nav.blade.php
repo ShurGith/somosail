@@ -13,6 +13,7 @@
                             <x-pagina._partials.nav-links />
                         </div>
                     {{-- </div> --}}
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="darkswitch" height="24" width="24"><path d="M16.5 21.75a9.75 9.75 0 0 1 0 -19.5 0.264 0.264 0 0 0 0.109 -0.5A11.138 11.138 0 0 0 12 0.75a11.25 11.25 0 0 0 0 22.5 11.138 11.138 0 0 0 4.609 -1 0.264 0.264 0 0 0 -0.109 -0.5Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m17.25 6.75 0 3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m15.75 8.25 3 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m21.75 12.75 0 3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m20.25 14.25 3 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m14.25 14.25 0 3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m12.75 15.75 3 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
@@ -52,17 +53,6 @@
                             </nav>
                         @endif
                         </div>
-
-                        <!--
-                        Dropdown menu, show/hide based on menu state.
-
-                        Entering: "transition ease-out duration-100"
-                            From: "transform opacity-0 scale-95"
-                            To: "transform opacity-100 scale-100"
-                        Leaving: "transition ease-in duration-75"
-                            From: "transform opacity-100 scale-100"
-                            To: "transform opacity-0 scale-95"
-                        -->
                         <div id="user-menu" class="origin-top transition transform scale-y-0 absolute right-0 z-10 mt-2 w-48  rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 duration-400" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('Profile') }}</a>
@@ -121,13 +111,19 @@
         </div>
     </nav>
 <script>
-    const btnIconMenu = document.getElementById("btn-icon-menu");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const svgs = btnIconMenu.querySelectorAll('svg');
+    const btnIconMenu = document.getElementById("btn-icon-menu"),
+        mobileMenu = document.getElementById("mobile-menu"),
+        svgs = btnIconMenu.querySelectorAll('svg'),
+        darkSwitch = document.getElementById("darkswitch")
+        darkSwitch.addEventListener("click", function () {
+            document.querySelector('html').classList.toggle("dark")
+
+        })
     btnIconMenu.addEventListener("click", function () {
         mobileMenu.classList.toggle("-translate-x-full");
         svgs.forEach((svg) => {
             svg.classList.toggle("hidden");
         })
     })
+
 </script>

@@ -15,4 +15,11 @@
     .post-list-header{
         @apply ml-8 text-left font-semibold text-gray-900;
     }
+
+    .show-delete-modal{
+        @apply opacity-100 translate-y-0 sm:scale-100 ease-in duration-1000;
+    }
+    .hide-delete-modal{
+       @apply opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 ease-out duration-1000;
+    }
 }

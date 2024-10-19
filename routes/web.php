@@ -21,5 +21,6 @@ Route::middleware([
         Route::get('/post-list',[PostController::class, 'postList'])->name('post.post-list');
         Route::get('/edit/{post}',[PostController::class, 'edit'])->name('post.edit');
         Route::put('/update/{id}',[PostController::class, 'update'])->name('post.update');
+        Route::delete('/destroy/{id}',[PostController::class, 'destroy'])->name('post.destroy');
         Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
 });

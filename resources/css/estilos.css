@@ -12,7 +12,7 @@
 }
 
 .alerta-expandible{
-    top:10%;
+    top:-8%;
     position: absolute;
     height: 0;
     overflow: clip;

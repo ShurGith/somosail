@@ -1,9 +1,19 @@
 
 <x-app-layout>
 <section class="flex items-center justify-center">
-    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="sm:w-3/4 flex flex-col justify-center items-center mt-4 relative">
+    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="md:w-3/4 flex flex-col justify-center items-center mt-4 relative">
         @csrf
-
+        @if (session('success'))<!-- SUCCESS POST SUBIDO INICIO -->
+        <div id="div-success" class="text-center rounded-md w-full  border border-green-600 bg-green-50 alerta-expandible">
+            <div class="p-10">
+                <div class="flex justify-center gap-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48" class="h-8 w-8 stroke-green-400"><path stroke="#2B6141" stroke-linecap="round" stroke-linejoin="round" d="M34.5 25.5c6.6274 0 12 -5.3726 12 -12 0 -6.62742 -5.3726 -12 -12 -12s-12 5.37258 -12 12c0 6.6274 5.3726 12 12 12Z" stroke-width="2"></path><path stroke="#2B6141" d="M34.5 19.5c-0.4142 0 -0.75 -0.33578 -0.75 -0.75S34.0858 18 34.5 18" stroke-width="2"></path><path stroke="#2B6141" d="M34.5 19.5c0.4142 0 0.75 -0.33578 0.75 -0.75S34.9142 18 34.5 18" stroke-width="2"></path><path stroke="#2B6141" stroke-linecap="round" stroke-linejoin="round" d="M34.5 13.5v-6" stroke-width="2"></path><path stroke="#2B6141" stroke-linecap="round" stroke-linejoin="round" d="M35.01 31.724c0.4044 2.0822 1.2538 4.0524 2.49 5.776h-36s3 -4.658 3 -16.5c0 -3.97824 1.58036 -7.79356 4.3934 -10.6066S15.52176 6 19.5 6V1.5" stroke-width="2"></path><path stroke="#2B6141" stroke-linecap="round" stroke-linejoin="round" d="M15.49598 43.5c0.25402 0.8654 0.78152 1.6252 1.5035 2.1656 0.72198 0.5406 1.5996 0.8328 2.5015 0.8328 0.90182 0 1.77942 -0.2922 2.50142 -0.8328 0.722 -0.5404 1.2496 -1.3002 1.5036 -2.1656" stroke-width="2"></path></svg>
+                    <h3 class="text-lg font-medium text-green-800">Post Añadido correctamente</h3>
+                </div>
+                <p class="mt-2 -sm text-green-700">El post ha sido añadido de manera correcta en el sistema y está disponible para la visualización.</p>
+            </div>
+        </div>
+     @endif <!-- SUCCESS POST SUBIDO FIN -->
         <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
         <div class="flex flex-col w-full px-4 md:w-3/4 ">
             <label for="titulo" class="font-medium text-gray-700">{{ __('Titulo')}}</label>
@@ -64,19 +74,6 @@
                 @enderror
             </fieldset>
         </div>
-        @if (session('success'))<!-- SUCCESS POST SUBIDO INICIO -->
-            <div id="div-success" class="rounded-md w-3/4 bg-green-50 alerta-expandible">
-                <div class="p-10">
-                    <div class="flex">
-                        <svg class="h-6 w-6 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="text-lg font-medium text-green-800">Post Añadido correctamente</h3>
-                    </div>
-                    <p class="mt-2 -sm text-green-700">El post ha sido añadido de manera correcta en el sistema y está disponible para la visualización.</p>
-                </div>
-            </div>
-         @endif <!-- SUCCESS POST SUBIDO FIN -->
         <div class="w-fitcontent px-4 md:w-3/4 mt-4 justify-start items-start gap-1 flex">
             <div class="w-full justify-start items-start gap-1.5 flex flex-col">
                 <div class="justify-start items-center gap-1 inline-flex">
@@ -121,9 +118,8 @@
     hideSuccess = function(){
         divSuccess.classList.toggle('expandido');
     }
-
     document.addEventListener('DOMContentLoaded', ()=>{
-        setTimeout(hideSuccess, 1000);
+       setTimeout(hideSuccess, 1000);
         setTimeout(hideSuccess, 5000);
     })
 }
