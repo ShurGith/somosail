@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
 class Post extends Model
@@ -18,13 +18,13 @@ class Post extends Model
         'created_at' => 'date:Y-s-M',
     ];
 
-    public function user():BelongsTo
+    public function user()
     {
-        return $this->BelongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
     public function categories():belongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_post');
+        return $this->belongsToMany(Category::class);
     }
 
 }

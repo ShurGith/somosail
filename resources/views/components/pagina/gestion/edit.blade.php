@@ -4,8 +4,6 @@
     <form method="POST" action="{{ route('post.update', $post->id) }}" enctype="multipart/form-data" class="sm:w-3/4 flex flex-col justify-center items-center mt-4 relative">
         @csrf
         @method('PUT')
-
-        {{-- <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}"> --}}
         <div class="flex flex-col w-full px-4 md:w-3/4 ">
             <label for="titulo" class="font-bold text-gray-700">{{ __('Titulo')}}</label>
             <input type="text" name="titulo" id="titulo" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Titulo') }}"
@@ -34,7 +32,6 @@
             </div>
             <div class="flex flex-col w-full px-4 md:w-3/4 mt-4">
                 <label for="user_id" class="font-bold text-gray-700">{{ __('User')}}</label>
-                {{ $post->user->name}}<br>{{ $post->user->id }}
                 <select name="user_id">
                     @foreach ($usuarios as $user)
                         <option value="{{ $user->id }}" {{ ($post->user->id == $user->id) ? 'selected':''}}>{{ $user->name }}</option>

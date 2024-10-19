@@ -16,17 +16,14 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('excerpt');
+            $table->foreignId('user_id');
             $table->string('image')->default('default_image.png');
             $table->boolean('is_published')->default(true);
-            $table->unsignedBigInteger('autor_id');
             $table->timestamps();
-            $table->foreign('autor_id')->references('id')->on('users');
+           // $table->foreign('autor_id')->references('id')->on('users');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('posts');

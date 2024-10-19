@@ -16,9 +16,7 @@ class PostController extends Controller
 {
     public function store(Request $request, PostRequest $postRequest)
     {
-        //Artisan::call('view:clear');
        $fileName = time().'-'.$request->file_image->getClientOriginalName();
-      //  $request->file_image->move(public_path('images/posts/'), $fileName);
          $request->file_image->storeAs('public/images/posts/', $fileName);
 
         $post = Post::create([
@@ -26,8 +24,8 @@ class PostController extends Controller
             'excerpt' => $request->excerpt,
             'image'=> $fileName,
             'content' => $request->content,
-            'is_published' => 1,//$request->is_published,
-            'autor_id' =>  $request->user_id,
+            'is_published' => ($request->publicado) ? 1 : 0,
+            'user_id' =>  $request->user_id,
         ]);
 
         DB::table('category_post')->insert([
@@ -35,9 +33,6 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'user_id' => $request->user_id,
         ]);
-
-        // return redirect()->action([ComunidadController::class, 'create']);
-        // return back()->withInput();
        // return redirect('/create')->warningBanner('Subscription pending approval.');
        return redirect('/create')->with('success','Post Correcto');
     }
@@ -64,7 +59,7 @@ class PostController extends Controller
 
     public function update( Request $request,  $id)
     {
-        Artisan::call('view:clear');
+        //Artisan::call('view:clear');
         $post = Post::findOrFail( $id);
         $post->title = $request->titulo;
         $post->excerpt = $request->excerpt;
@@ -77,7 +72,7 @@ class PostController extends Controller
           }
         $post->content= $request->content;
         $post->is_published = ($request->publicado) ? 1 : 0;
-        $post->autor_id =  $request->user_id;
+        $post->user_id =  $request->user_id;
         $post->save();
        DB::table('category_post')->where('post_id', $id)->update([
         'category_id' => $request->category_id,

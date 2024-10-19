@@ -16,11 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
-            // $table->foreign('category_id')->references('id')->on('categories');
-            // $table->foreign('post_id')->references('id')->on('posts');
-            // $table->foreign('user_id')->references('id')->on('users');
 
 
         });
