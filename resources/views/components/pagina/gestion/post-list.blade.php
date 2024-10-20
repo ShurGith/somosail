@@ -2,8 +2,6 @@
     'metaTitle' => " - Listando Posts",
 ])
 <x-app-layout :metaTitle="$metaTitle">
-
-
 <div class="sm:px-1 lg:px-8">
     <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -18,7 +16,7 @@
         <div class="col-span-1 post-list-header mx-auto hidden lg:flex"> {{ __('Categ') }}</div>
         <div class="col-span-3 post-list-header mx-auto"> {{ __('Action') }}</div>
     </div>
-
+    <x-pagina._partials.modal_destroy />
     <div class="w-full border px-2 bg-white/80">
         @foreach ($posts as $post )
             @php
@@ -58,45 +56,14 @@
                 </div>
                 <div class="col-span-3 justify-center flex flex-col md:flex-row gap-y-1 gap-x-1">
                     <a class='py-2 px-4 text-sm rounded-lg bg-green-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-green-700' href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
-                    <a class='py-2 px-4 text-sm rounded-lg bg-blue-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-blue-700' href="{{ route('pagina.show', $post->id) }}">{{ __('See') }}</a>
-                    <button onclick = "fnManiobra(this)" data-post-id="{{ $post->id }}"  class='btn-borrar py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
+                    <a class='py-2 px-4 text-sm rounded-lg bg-blue-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-blue-700' href="{{ route('pagina.show', $post->id) }}" target="_blank">{{ __('See') }}</a>
+                    <button onclick = "fnManiobra(this)" data-post-route="{{ route('post.destroy', $post->id) }}"  class='btn-borrar py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
                 </div>
             </div>
         @endforeach
     </div>
     {{ $posts->links() }}
 </div>
-<!--  MODAL DE BORRADO -->
-<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div id="modal-confirm" class="fixed bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed z-10 w-screen overflow-y-auto">
-    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-    <div id="modal-confirm-inner" class="hide-delete-modal relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-        <div class="sm:flex sm:items-start">
-        <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-            </svg>
-        </div>
-        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-            <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Eliminado de Post</h3>
-            <div class="mt-2">
-            <p class="text-sm text-gray-500">Ultima verificación antes de eliminar el post, este proceso no es reversible.</p>
-            </div>
-        </div>
-        </div>
-      {{--  <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-            <form id="form-delete" method="POST" action="{{isset($post->id) ?? route('post.destroy', $post->id) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" >{{ __('Delete') }}</button>
-            </form>
-            <button id="btn-modal-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">{{ __('Cancel') }}</button>
-        </div>
-    </div> --}}
-    </div>
-</div>
-{{-- <x-pagina._partials.modal_destroy :post:'$post'/>--}}
 </x-app-layout>
 <script>
 const btnCancel = document.getElementById('btn-modal-cancel'),
@@ -108,9 +75,7 @@ function  fnManiobra(e){
     modalBorrarInner.classList.toggle('show-delete-modal')
     modalBorrarInner.classList.toggle('hide-delete-modal')
     modalBorrar.classList.toggle('inset-0')
-   // console.log(e.dataset.postId)
-   console.dir(form.action)
-   //form.action = `/destroy/${e.dataset.postId}`
+   form.action = `${e.dataset.postRoute}`
 }
 
 btnCancel.addEventListener('click', ()=>{

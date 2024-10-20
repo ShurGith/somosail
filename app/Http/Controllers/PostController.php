@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function store(Request $request, PostRequest $postRequest)
     {
-       $fileName = time().'-'.$request->file_image->getClientOriginalName();
+        $fileName = time().'-'.$request->file_image->getClientOriginalName();
          $request->file_image->storeAs('public/images/posts/', $fileName);
 
         $post = Post::create([
@@ -76,17 +76,15 @@ class PostController extends Controller
         return redirect()->back()->with('success','Post Actualizado');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail( $id);
-        // dd($post);
         $post->delete();
-        return redirect()->back()->with('status','Post Elimimado');
+        return redirect()->back()->with('status','Post Elimimado')->flash('flash.banner', 'Se ha eliminado el post correspondiente');
     }
 
     public function postList(Request $request)
     {
-        $posts = Post::paginate(15);
+        $posts = Post::paginate(10);
         return view('components.pagina.gestion.post-list', compact('posts'));
     }
 }

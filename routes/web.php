@@ -16,11 +16,11 @@ Route::get('/show/{post}', [PostController::class,'show'])->name('pagina.show');
 
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified', ])->group(function () {
-        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
         Route::get('/create',[PostController::class, 'create'])->name('post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
         Route::get('/post-list',[PostController::class, 'postList'])->name('post.post-list');
         Route::get('/edit/{post}',[PostController::class, 'edit'])->name('post.edit');
         Route::put('/update/{id}',[PostController::class, 'update'])->name('post.update');
-        Route::delete('/destroy/{id}',[PostController::class, 'destroy'])->name('post.destroy');
-        Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
+        Route::delete('/destroy/{post}',[PostController::class, 'destroy'])->name('post.destroy');
 });

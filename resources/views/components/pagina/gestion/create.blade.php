@@ -1,5 +1,6 @@
 
 <x-app-layout>
+
 <section class="flex items-center justify-center">
     <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="md:w-3/4 flex flex-col justify-center items-center mt-4 relative">
         @csrf
@@ -13,8 +14,8 @@
                 <p class="mt-2 -sm text-green-700">El post ha sido añadido de manera correcta en el sistema y está disponible para la visualización.</p>
             </div>
         </div>
-     @endif <!-- SUCCESS POST SUBIDO FIN -->
-        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+        @endif <!-- SUCCESS POST SUBIDO FIN -->
+       <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
         <div class="flex flex-col w-full px-4 md:w-3/4 ">
             <label for="titulo" class="font-medium text-gray-700">{{ __('Titulo')}}</label>
             <input type="text" name="titulo" id="titulo" class="w-full py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] placeholder-gray-400 text-gray-900 text-base font-normal" placeholder="{{ __('Titulo') }}"  value="{{ old('titulo') }}">
@@ -83,7 +84,7 @@
             </div>
         </div>
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Guardar</button>
+            <button type="submit" class="cursor-pointer rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Guardar</button>
         </div>
         <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
 <script>
@@ -107,6 +108,7 @@
     });
 </script>
     </form>
+
 </section>
 </x-app-layout>
 
@@ -119,7 +121,7 @@
         divSuccess.classList.toggle('expandido');
     }
     document.addEventListener('DOMContentLoaded', ()=>{
-       setTimeout(hideSuccess, 1000);
+        setTimeout(hideSuccess, 200);
         setTimeout(hideSuccess, 5000);
     })
 }
