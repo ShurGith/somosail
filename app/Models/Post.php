@@ -18,7 +18,7 @@ class Post extends Model
         'created_at' => 'date:Y-s-M',
     ];
 
-    public function user()
+    public function user():belongsTo
     {
         return $this->belongsTo(User::class);
     }

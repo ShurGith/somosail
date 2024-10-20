@@ -7,9 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -31,7 +29,6 @@ class PostController extends Controller
         DB::table('category_post')->insert([
             'post_id' => $post->id,
             'category_id' => $request->category_id,
-            'user_id' => $request->user_id,
         ]);
        // return redirect('/create')->warningBanner('Subscription pending approval.');
        return redirect('/create')->with('success','Post Correcto');
@@ -59,7 +56,6 @@ class PostController extends Controller
 
     public function update( Request $request,  $id)
     {
-        //Artisan::call('view:clear');
         $post = Post::findOrFail( $id);
         $post->title = $request->titulo;
         $post->excerpt = $request->excerpt;
@@ -76,13 +72,14 @@ class PostController extends Controller
         $post->save();
        DB::table('category_post')->where('post_id', $id)->update([
         'category_id' => $request->category_id,
-        'user_id' => $request->user_id,
     ]);
         return redirect()->back()->with('success','Post Actualizado');
     }
 
-    public function destroy(Post $post)
+    public function destroy($id)
     {
+        $post = Post::findOrFail( $id);
+        // dd($post);
         $post->delete();
         return redirect()->back()->with('status','Post Elimimado');
     }

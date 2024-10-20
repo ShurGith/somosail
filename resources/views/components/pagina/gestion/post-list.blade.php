@@ -59,7 +59,7 @@
                 <div class="col-span-3 justify-center flex flex-col md:flex-row gap-y-1 gap-x-1">
                     <a class='py-2 px-4 text-sm rounded-lg bg-green-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-green-700' href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
                     <a class='py-2 px-4 text-sm rounded-lg bg-blue-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-blue-700' href="{{ route('pagina.show', $post->id) }}">{{ __('See') }}</a>
-                    <button id="btn-borrar" class='py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
+                    <button onclick = "fnManiobra(this)" data-post-id="{{ $post->id }}"  class='btn-borrar py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
                 </div>
             </div>
         @endforeach
@@ -67,7 +67,7 @@
     {{ $posts->links() }}
 </div>
 <!--  MODAL DE BORRADO -->
-{{--<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div id="modal-confirm" class="fixed bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
     <div class="fixed z-10 w-screen overflow-y-auto">
     <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -85,32 +85,34 @@
             </div>
         </div>
         </div>
-        <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-            <form method="POST" action="{{ route('post.destroy', $post->id) }}">
+      {{--  <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+            <form id="form-delete" method="POST" action="{{isset($post->id) ?? route('post.destroy', $post->id) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" >{{ __('Delete') }}</button>
             </form>
             <button id="btn-modal-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">{{ __('Cancel') }}</button>
         </div>
+    </div> --}}
     </div>
-    </div>
-</div>--}}
-<x-pagina._partials.modal_destroy :post:'$post'/>
+</div>
+{{-- <x-pagina._partials.modal_destroy :post:'$post'/>--}}
 </x-app-layout>
 <script>
-const btnBorrar = document.getElementById('btn-borrar'),
-    btnCancel = document.getElementById('btn-modal-cancel'),
+const btnCancel = document.getElementById('btn-modal-cancel'),
     modalBorrar = document.getElementById('modal-confirm'),
-    modalBorrarInner = document.getElementById('modal-confirm-inner')
+    modalBorrarInner = document.getElementById('modal-confirm-inner'),
+    form = document.querySelector('#form-delete')
 
-
-btnBorrar.addEventListener('click', ()=>{
+function  fnManiobra(e){
     modalBorrarInner.classList.toggle('show-delete-modal')
     modalBorrarInner.classList.toggle('hide-delete-modal')
     modalBorrar.classList.toggle('inset-0')
+   // console.log(e.dataset.postId)
+   console.dir(form.action)
+   //form.action = `/destroy/${e.dataset.postId}`
+}
 
-})
 btnCancel.addEventListener('click', ()=>{
     modalBorrarInner.classList.toggle('show-delete-modal')
     modalBorrarInner.classList.toggle('hide-delete-modal')
