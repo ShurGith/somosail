@@ -12,4 +12,17 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build:{
+        minify: true,
+        sourcemap: false,
+
+        rollupOptions:{
+            output:{
+                manualChunks(id){
+                    return  "all";
+                }
+            }
+        }
+
+    }
 });

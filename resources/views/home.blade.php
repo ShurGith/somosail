@@ -4,7 +4,14 @@
     'grupo' => $grupo ?? "post",
     'active' => false,//Enlaces nav,
     'metaDescription' =>  $metaDescription ?? "Lugar de encencuentro Devs",
+    //'pageTitle' => $pageTitle,
 ])
+@php
+if(isset($pageTitle)){
+   $pagina = 'Categoría ' . $pageTitle;
+}
+
+@endphp
 <x-pagina.html :pagActual='ucfirst($pagina)' :metaDescription='$metaDescription' />
 <body>
 <div class="min-h-screen grid grid-rows-[auto_1fr_auto]">

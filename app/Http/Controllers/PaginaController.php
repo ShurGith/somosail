@@ -8,22 +8,6 @@ use Illuminate\Http\Request;
 
 class PaginaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $posts = Post::all();
-        return view('show',compact('posts', 'posts_lasts'));
-    }
-
-
-    /**
-     * Display the specified resource.
-     */
-
-
-
     public function categs()
     {
         $categs = Category::get();
@@ -36,11 +20,13 @@ class PaginaController extends Controller
     public function category_simple($id)
     {
         $categ = Category::find($id);
+        $catName = $categ->name;
         $posts = $categ->posts;
         return view('home',
                     ['pagina' => 'Categ',
                     'grupo'=>'category',
                     'titulo' => true,
+                    'pagTitle' => "Salaid",
                     'datos' => $categ,
                     'posts' => $posts]);
     }

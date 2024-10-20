@@ -2,6 +2,7 @@
     'metaTitle' => " - Listando Posts",
 ])
 <x-app-layout :metaTitle="$metaTitle">
+<x-pagina._partials.modal_destroy />
 <div class="sm:px-1 lg:px-8">
     <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -16,7 +17,7 @@
         <div class="col-span-1 post-list-header mx-auto hidden lg:flex"> {{ __('Categ') }}</div>
         <div class="col-span-3 post-list-header mx-auto"> {{ __('Action') }}</div>
     </div>
-    <x-pagina._partials.modal_destroy />
+
     <div class="w-full border px-2 bg-white/80">
         @foreach ($posts as $post )
             @php
@@ -57,7 +58,7 @@
                 <div class="col-span-3 justify-center flex flex-col md:flex-row gap-y-1 gap-x-1">
                     <a class='py-2 px-4 text-sm rounded-lg bg-green-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-green-700' href="{{ route('post.edit', $post->id) }}">{{ __('Edit') }}</a>
                     <a class='py-2 px-4 text-sm rounded-lg bg-blue-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-blue-700' href="{{ route('pagina.show', $post->id) }}" target="_blank">{{ __('See') }}</a>
-                    <button onclick = "fnManiobra(this)" data-post-route="{{ route('post.destroy', $post->id) }}"  class='btn-borrar py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
+                    <button onclick = "fnManiobra(this)"  data-dialog-target="animated-dialog" data-post-route="{{ route('post.destroy', $post->id) }}"  class='modal-button btn-borrar py-2 px-4 text-sm rounded-lg bg-red-500 text-white cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-red-700' >{{ __('Delete') }}</button>
                 </div>
             </div>
         @endforeach
@@ -65,22 +66,20 @@
     {{ $posts->links() }}
 </div>
 </x-app-layout>
+
 <script>
-const btnCancel = document.getElementById('btn-modal-cancel'),
-    modalBorrar = document.getElementById('modal-confirm'),
-    modalBorrarInner = document.getElementById('modal-confirm-inner'),
-    form = document.querySelector('#form-delete')
+const btnCerrar = document.getElementById('btn-modal-closer'),
+    form = document.getElementById('form-delete'),
+    modalConfirm = document.getElementById('modal-confirm-borrar'),
+    divInner = document.getElementById('modal-borrar-inner')
 
 function  fnManiobra(e){
-    modalBorrarInner.classList.toggle('show-delete-modal')
-    modalBorrarInner.classList.toggle('hide-delete-modal')
-    modalBorrar.classList.toggle('inset-0')
-   form.action = `${e.dataset.postRoute}`
+    form.action = `${e.dataset.postRoute}`
 }
-
-btnCancel.addEventListener('click', ()=>{
-    modalBorrarInner.classList.toggle('show-delete-modal')
-    modalBorrarInner.classList.toggle('hide-delete-modal')
-    modalBorrar.classList.toggle('inset-0')
-})
+ modalConfirm.addEventListener('click',(e)=>{
+    if(e.target !== divInner)
+        console.dir(e.target)
+   // btnCerrar.click()
+ })
 </script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>

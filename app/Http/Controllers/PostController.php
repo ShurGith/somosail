@@ -35,6 +35,8 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
+
+        session()->flash('status','Viendo los posts');
         return view('home',
                     ['pagina'=>'show',
                     'grupo'=>'show',
@@ -79,7 +81,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->back()->with('status','Post Elimimado')->flash('flash.banner', 'Se ha eliminado el post correspondiente');
+        return redirect()->back()->with('status','Post Elimimado');
     }
 
     public function postList(Request $request)
