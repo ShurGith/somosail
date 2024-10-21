@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->boolean('show_userPhoto');//En show.blade
             $table->boolean('show_userName');//En show.blade
-            $table->boolean('show_headerMenssage');
+            $table->boolean('show_top_headerMenssage'); //Mensaje Barra Superior
+            $table->string('top_headerMenssage');
+            $table->boolean('show_headerMenssage');//Mensaje debajo del nav
             $table->string('headerMenssage');
             $table->string('default_image_post');
             $table->string('default_profile_image');

@@ -26,7 +26,7 @@ class PaginaController extends Controller
                     ['pagina' => 'Categ',
                     'grupo'=>'category',
                     'titulo' => true,
-                    'pagTitle' => "Salaid",
+                    'pagTitle' => $catName,
                     'datos' => $categ,
                     'posts' => $posts]);
     }
