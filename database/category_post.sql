@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: database.sqlite
--- Generation Time: 2024-10-20 22:38:55.6110
+-- Generation Time: 2024-10-22 00:45:15.3970
 -- -------------------------------------------------------------
 
 

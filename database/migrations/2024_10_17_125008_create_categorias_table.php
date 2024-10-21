@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('logo')->nullable;
             $table->string('ico')->nullable;
-            $table->string('logo_color');
-            $table->string('primary_color');
-            $table->string('secondary_color');
+            $table->string('logo_color')->nullable;
+            $table->string('primary_color')->nullable;
+            $table->string('secondary_color')->nullable;
+            $table->text('description')->nullable;
             $table->timestamps();
         });
     }

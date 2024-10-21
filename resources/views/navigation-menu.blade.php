@@ -24,6 +24,9 @@
                     <x-nav-link href="{{ route('post.post-list') }}" :active="request()->routeIs('post.post-list')">
                         {{ __('Listado de Posts') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('index-categ') }}" :active="request()->routeIs('index-categ')">
+                        {{ __('Listado de Categorias') }}
+                    </x-nav-link>
                 </div>
             </div>
 

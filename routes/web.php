@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PaginaController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PaginaController;
+use App\Http\Controllers\CategoryController;
 
 
 // Route::get('/', function () {
@@ -28,4 +29,10 @@ Route::middleware([
         Route::get('/edit/{post}',[PostController::class, 'edit'])->name('post.edit');
         Route::put('/update/{id}',[PostController::class, 'update'])->name('post.update');
         Route::delete('/destroy/{post}',[PostController::class, 'destroy'])->name('post.destroy');
+
+        //Categorias
+        Route::get('/index-categ', [CategoryController::class, 'index'])->name('index-categ');
+        Route::get('/edit-categ/{category}', [CategoryController::class, 'edit'])->name('edit-categ');
+        Route::put('/chequear/{category}', [CategoryController::class, 'chequear'])->name('chequear-categ');
+        Route::put('/categ-update/{category}', [CategoryController::class, 'update'])->name('update-categ');
 });
