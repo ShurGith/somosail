@@ -4,7 +4,8 @@
     //     $metaTitle = $siteTitle.' - '. $datos->title;
     //     $metaDescription .=' - '.strtoupper($datos->categories[0]->name).' - '.$datos->title;
     // }
-@endphp
+    //phpinfo();
+    @endphp
 <x-pagina.html :metaTitle='ucfirst($metaTitle)' :metaDescription='$metaDescription' />
 <body>
     <div class="min-h-screen grid grid-rows-[auto_1fr_auto]">

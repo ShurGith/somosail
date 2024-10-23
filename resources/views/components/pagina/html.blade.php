@@ -20,4 +20,3 @@
     @livewireStyles
 </head>
 
-

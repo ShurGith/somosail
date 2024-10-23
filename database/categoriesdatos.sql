@@ -4,12 +4,9 @@
 -- https://tableplus.com/
 --
 -- Database: database.sqlite
--- Generation Time: 2024-10-22 00:45:00.3510
+-- Generation Time: 2024-10-22 15:05:43.3230
 -- -------------------------------------------------------------
 
-
-DROP TABLE IF EXISTS "categories";
-CREATE TABLE "categories" ("id" integer primary key autoincrement not null, "name" varchar not null, "logo" varchar not null, "ico" varchar not null, "logo_color" varchar not null, "primary_color" varchar not null, "secondary_color" varchar not null, "created_at" datetime, "updated_at" datetime, "description" text, "opacidad" varchar);
 
 INSERT INTO "categories" ("id", "name", "logo", "ico", "logo_color", "primary_color", "secondary_color", "created_at", "updated_at", "description", "opacidad") VALUES
 ('1', 'Laravel', 'laravel-logo.svg', 'ti-brand-laravel', '#ffffff', '#FF2D20', '#000000', NULL, NULL, 'Este es el texto descriptivo de la categoría de laravel.', '66'),
