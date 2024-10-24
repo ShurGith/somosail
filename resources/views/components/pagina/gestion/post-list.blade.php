@@ -64,6 +64,7 @@
         @endforeach
     </div>
     {{ $posts->links() }}
+    // https://lorisleiva.com/laravel-pagination-with-tailwindcss
 </div>
 </x-app-layout>
 
