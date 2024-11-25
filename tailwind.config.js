@@ -41,9 +41,9 @@ export default {
     plugins: [forms,
         typography,
         require('@tailwindcss/forms'),
-        require('tailwindcss-plugins/pagination')({
+       // require('tailwindcss-plugins/pagination')({
             /* Customizations here... */
             // https://lorisleiva.com/laravel-pagination-with-tailwindcss
-        }),
+       // }),
     ],
 };

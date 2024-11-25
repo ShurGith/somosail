@@ -72,9 +72,17 @@ class PostController extends Controller
         $post->is_published = ($request->publicado) ? 1 : 0;
         $post->user_id =  $request->user_id;
         $post->save();
-       DB::table('category_post')->where('post_id', $id)->update([
+        DB::table('category_post')->where('post_id', $id)->update([
         'category_id' => $request->category_id,
     ]);
+        return redirect()->back()->with('success','Post Actualizado');
+    }
+
+    public function publicado(Request $request, $id)
+    {
+        $post = Post::findOrFail( $id);
+        $post->is_published = ($request->publicado) ? 1 : 0;
+        $post->save();
         return redirect()->back()->with('success','Post Actualizado');
     }
 
