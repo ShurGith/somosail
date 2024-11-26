@@ -3,6 +3,7 @@
 ])
 
 <div x-data="randomize" class="bg-white py-4 px-10 my-10 rounded-xl">
+
     <div class="flex flex-row items-center mt-4 mb-12 gap-12">
         <h3 class="text-3xl  ml-4 w-fit pb-5 pr-8 border-b-4 border-stone-400 ">Temas aleatorios</h3>
         <button @click="cargar()" class="bg-blue-950 h-10 transition duration-300 hover:bg-blue-900 text-white pl-2 py-2 gap-4 cursor-pointer pr-5 rounded flex">
@@ -44,6 +45,7 @@
         </template>
     </div>
 </div>
+
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('randomize', () => ({

@@ -44,7 +44,8 @@ class PostController extends Controller
                     ['pagina'=>'show',
                     'grupo'=>'show',
                     'datos'=>$post,
-                    'randoms'=>$randoms
+                    'randoms'=>$randoms,
+                    'sesieon' => session()->flash('alert', 'Settings saved successfully.')
                 ]);
     }
 

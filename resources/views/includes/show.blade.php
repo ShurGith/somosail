@@ -10,6 +10,7 @@
 @endphp
 
 <section class="w-full bg-white rounded-lg shadow-lg p-4 h-full grid content-between gap-y-20">
+    <x-alert class="bg-green-700 text-green-100 p-4" />
     <article class="w-full md:w-2/3 mx-auto gap-y-2 items-center flex flex-col "">
         @if($datos->is_published or auth()->id())
 
@@ -17,7 +18,7 @@
             </div>
             <div class="flex items-center gap-12 justify-center mb-12 mt-4">
                 @foreach ($datos->categories as $cat)
-                    <div class="text-white max-w-fit rounded ease-linear duration-300 hover:shadow-lg shadow shadow-black" style="background-color: {{ $cat->primary_color }}">
+                    <div class="text-white  rounded ease-linear duration-300 hover:shadow-lg shadow shadow-black" style="background-color: {{ $cat->primary_color }}">
                         <a href="{{ route('pagina.category', $cat->id) }}" class="flex gap-2 px-2 py-1">
                             <img src="{{ asset('storage/images/logos/'.$cat->logo) }}" class="max-w-6">
                             <p class="text-sm leading-7 ">{{ $cat->name }}</p>
@@ -46,13 +47,13 @@
     </article>
 
 
-<div class="flex flex-col gap-4 items-center border-2 border-gray-300 rounded-lg p-4 mt-20">
+<div class="flex flex-col gap-4 items-center p-4 mt-20">
     <h1 class="text-2xl font-bold mb-4">{{ __('Recomendaciones') }}</h1>
-    <div class="md:max-w-4/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ">
+    <div class="mx-auto grid grid-cols-1 gap-8  lg:mx-auto  lg:grid-cols-2 ">
         @foreach ($randoms as $rand )
-        <div class="w-full bg-red-100 min-w-96">
+        <div class=" max-w-xl">
         <a href="{{ route('pagina.show', $rand->id)}}">
-        <div class="w-full h-48 bg-white rounded-lg shadow-md p-4 bg-conver bg-center" style="background-image: url({{ asset('storage/images/posts/'.$rand->image) }})"></div>
+        <div class="w-full h-48 rounded-tl-lg rounded-tr-lg shadow-md p-4 bg-center bg-cover bg-no-repeat" style="background-image: url({{ asset('storage/images/posts/'.$rand->image) }})"></div>
         </a>
         <div class="flex items-center gap-4 pl-4 pt-2">
             @foreach ($rand->categories as $cat)
