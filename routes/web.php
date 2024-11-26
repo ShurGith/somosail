@@ -28,7 +28,8 @@ Route::middleware([
         Route::get('/post-list',[PostController::class, 'postList'])->name('post.post-list');
         Route::get('/edit/{post}',[PostController::class, 'edit'])->name('post.edit');
         Route::put('/update/{id}',[PostController::class, 'update'])->name('post.update');
-        Route::put('/pubicado/{id}',[PostController::class, 'publicado'])->name('post.publicado');
+        Route::put('/publicado/{id}',[PostController::class, 'publicado'])->name('post.publicado');
+        Route::put('/publico/{id}',[PostController::class, 'publico'])->name('post.publico');
         Route::delete('/destroy/{post}',[PostController::class, 'destroy'])->name('post.destroy');
 
         //Categorias

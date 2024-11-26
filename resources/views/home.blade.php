@@ -7,8 +7,7 @@
     //phpinfo();
     @endphp
 <x-pagina.html :metaTitle='ucfirst($metaTitle)' :metaDescription='$metaDescription' />
-<body>
-    <div class="min-h-screen grid grid-rows-[auto_1fr_auto]">
+<body class="min-h-dvh grid grid-rows-[auto_1fr_auto]">
         <!-- Seccion Header -->
         <section>
             <x-pagina._partials.nav  :nota="$nota" :notaContent="$notaContent" />
@@ -17,16 +16,16 @@
             @endif
         </section>
         <!-- Seccion Contenido -->
-        <main>
-            <div class="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 l">
+        <main class="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 ">
+
                 @include('includes.'.$mostrar)
-            </div>
+
         </main>
         <!-- Seccion Footer -->
         <section>
             <x-pagina.footer />
         </section>
-    </div>
+
     <x-pagina._partials.footer-scripts />
 </body>
 </html

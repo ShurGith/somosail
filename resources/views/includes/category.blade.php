@@ -26,18 +26,23 @@
     </div>
     @endif
     @foreach ($posts as $post)
-        <div class="relative">
-            <div class="absolute w-full h-full top-0 left-0 border-2 border-black border-dashed rounded-lg"></div>
-            <div class="div-categ w-full h-full relative flex min-h-40 flex-col justify-between px-6 py-4 bg-white rounded-lg bg-center bg-no-repeat bg-cover shadow transition-all ease-in-out duration-500 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-black" style="background-image:linear-gradient(to bottom,{{ $datos->secondary_color. $datos->opacidad }}, {{ $datos->primary_color . $datos->opacidad }} ),url('{{ asset('storage/images/posts/'.$post->image ) }}')">
-                <div>
-                    <h3 class="font-bold text-white text-xl z-10">{{ $post->title }}</h3>
-                    <p class=" mt-1 text-white text-sm z-10">{{ $post->excerpt }}</p>
-                </div>
-                <div class="flex justify-end items-end">
-                    <a class="bg-slate-200 boton-amarillo" href="{{ route('pagina.show', $post->id) }}">{{ __('View') }}</a>
+        @if($post->is_published or auth()->id())
+            <div class="relative">
+                <div class="absolute w-full h-full top-0 left-0 border-2 border-black border-dashed rounded-lg"></div>
+                <div class="div-categ w-full h-full relative flex min-h-40 flex-col justify-between px-6 py-4 bg-white rounded-lg bg-center bg-no-repeat bg-cover shadow transition-all ease-in-out duration-500 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-xl hover:shadow-black" style="background-image:linear-gradient(to bottom,{{ $datos->secondary_color. $datos->opacidad }}, {{ $datos->primary_color . $datos->opacidad }} ),url('{{ asset('storage/images/posts/'.$post->image ) }}')">
+                    <div>
+                        <h3 class="font-bold text-white text-xl z-10">{{ $post->title }}</h3>
+                        <p class=" mt-1 text-white text-sm z-10">{{ $post->excerpt }}</p>
+                    </div>
+                    <div class="flex justify-end items-end gap-20">
+                        @if(!$post->is_published )
+                            <p class="bg-red-500 py-2 px-8 text-white rounded-lg">{{ __('Sin publicar') }}</p>
+                        @endif
+                        <a class="bg-slate-200 boton-amarillo" href="{{ route('pagina.show', $post->id) }}">{{ __('View') }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endforeach
 </div>
 {{-- {{ $datos->primary_color }}{{ $datos->secondary_color }} --}}

@@ -29,6 +29,8 @@
             <div class="flex flex-col w-full px-4 md:w-1/4 mt-4">
                 <label for="publicado" class="font-bold text-gray-700">{{ __('Publicado')}}</label>
                 <input type="checkbox" name="publicado" {{ $post->is_published ? 'checked' : "" }}>
+                <label for="publico" class="font-bold text-gray-700">{{ __('Publico')}}</label>
+                <input type="checkbox" name="publico" {{ $post->publico ? 'checked' : "" }}>
             </div>
             <div class="flex flex-col w-full px-4 md:w-3/4 mt-4">
                 <label for="user_id" class="font-bold text-gray-700">{{ __('User')}}</label>
@@ -40,8 +42,8 @@
             </div>
         </div>
 <!-- USUARIOS Y PUBLICADO-->
-            <div class="flex flex-col px-4 md:w-3/4 mt-4 ">
-                <label for="image-file" class="font-bold text-gray-700">{{ __('Imagen Predeterminada')}}</label>
+            <div class="flex flex-col px-4 md:w-3/4 mt-4 border border-gray-200 items-center ">
+                <label for="image-file" class="mt-4 text-xl font-bold text-gray-700">{{ __('Imagen Predeterminada')}}</label>
             <div class="flex justify-between items-center w-full">
             <input type="file" name="file_image" id="file_image" class="py-3 px-5 rounded-lg border border-gray-200 bg-transparent focus:outline-none shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)]">
             <div class="text-center opacity-0">

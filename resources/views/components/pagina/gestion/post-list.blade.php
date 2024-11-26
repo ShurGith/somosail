@@ -47,11 +47,20 @@
                     <form method="POST" action="{{ route('post.publicado', $post->id) }}">
                         @csrf
                         @method('PUT')
-                    <button class="cursor-pointer {{ ($post->is_published) ?  'text-green-500 bg-green-100  border-green-400' :  'text-gray-500 bg-gray-100 border-gray-400 ' }} border inline-flex items-center text-xs font-medium ml-1 px-2 py-0.5 rounded-full">
-                    <span class="{{ ($post->is_published) ?  'bg-green-400 ' :  'bg-gray-400' }} w-1.5 h-1.5 mr-1 rounded-full"></span>
+                    <button class="cursor-pointer {{ ($post->is_published) ?  'text-green-500 bg-green-100  border-green-400' :  'text-red-500 bg-red-100 border-red-400 ' }} border inline-flex items-center text-xs font-medium ml-1 px-2 py-0.5 rounded-full">
+                    <span class="{{ ($post->is_published) ?  'bg-green-400 ' :  'bg-red-400' }} w-1.5 h-1.5 mr-1 rounded-full"></span>
                     <span class="hidden md:flex"> {{ ($post->is_published) ? "Publicado" : "Sin Publicar" }} </span>
                     </button>
                     <input type="hidden" name='publicado' value=" {{ !$post->is_published }}">
+                    </form>
+                    <form method="POST" action="{{ route('post.publico', $post->id) }}">
+                        @csrf
+                        @method('PUT')
+                    <button class="cursor-pointer {{ ($post->publico) ?  'text-blue-500 bg-blue-100  border-blue-400' :  'text-amber-500 bg-amber-100 border-amber-400 ' }} border inline-flex items-center text-xs font-medium ml-1 px-2 py-0.5 rounded-full">
+                    <span class="{{ ($post->publico) ?  'bg-blue-400 ' :  'bg-amber-400' }} w-1.5 h-1.5 mr-1 rounded-full"></span>
+                    <span class="hidden md:flex"> {{ ($post->publico) ? "Post Publico" : "Registrados" }} </span>
+                    </button>
+                    <input type="hidden" name='publico' value=" {{ !$post->publico }}">
                 </form>
                 </div>
                 <div class="col-span-1 mx-auto hidden md:flex">

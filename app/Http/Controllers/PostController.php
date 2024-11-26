@@ -23,6 +23,7 @@ class PostController extends Controller
             'image'=> $fileName,
             'content' => $request->content,
             'is_published' => ($request->publicado) ? 1 : 0,
+            'publico' => ($request->publico) ? 1 : 0,
             'user_id' =>  $request->user_id,
         ]);
 
@@ -37,11 +38,16 @@ class PostController extends Controller
     {
 
         session()->flash('status','Viendo los posts');
+        $randoms = Post::inRandomOrder()
+        ->where('is_published', true)->limit(4)->get();
         return view('home',
                     ['pagina'=>'show',
                     'grupo'=>'show',
-                    'datos'=>$post]);
+                    'datos'=>$post,
+                    'randoms'=>$randoms
+                ]);
     }
+
     public function create()
     {
         $categs = Category::all();
@@ -70,6 +76,7 @@ class PostController extends Controller
           }
         $post->content= $request->content;
         $post->is_published = ($request->publicado) ? 1 : 0;
+        $post->publico = ($request->publico) ? 1 : 0;
         $post->user_id =  $request->user_id;
         $post->save();
         DB::table('category_post')->where('post_id', $id)->update([
@@ -86,6 +93,13 @@ class PostController extends Controller
         return redirect()->back()->with('success','Post Actualizado');
     }
 
+    public function publico(Request $request, $id)
+    {
+        $post = Post::findOrFail( $id);
+        $post->publico = ($request->publico) ? 1 : 0;
+        $post->save();
+        return redirect()->back()->with('success','Post Actualizado');
+    }
     public function destroy(Post $post)
     {
         $post->delete();

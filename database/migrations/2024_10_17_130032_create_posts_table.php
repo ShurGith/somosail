@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('image')->default('default_image.png');
             $table->boolean('is_published')->default(true);
+            $table->boolean('publico')->default(true);
             $table->timestamps();
            // $table->foreign('autor_id')->references('id')->on('users');
         });
