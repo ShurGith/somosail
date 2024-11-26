@@ -48,20 +48,23 @@
 
 <div class="flex flex-col gap-4 items-center border-2 border-gray-300 rounded-lg p-4 mt-20">
     <h1 class="text-2xl font-bold mb-4">{{ __('Recomendaciones') }}</h1>
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ">
+    <div class="md:max-w-4/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ">
         @foreach ($randoms as $rand )
         <div>
-            @foreach ($rand->categories as $cat)
-                <div class="text-white max-w-fit rounded ease-linear duration-300 hover:shadow-lg shadow shadow-black" style="background-color: {{ $cat->primary_color }}">
-                    <a href="{{ route('pagina.category', $cat->id) }}" class="flex gap-2 px-2 py-1">
-                        <img src="{{ asset('storage/images/logos/'.$cat->logo) }}" class="max-w-6">
-                        <p class="text-sm leading-7 ">{{ $cat->name }}</p>
-                    </a>
-                </div>
-            @endforeach
-        
+        <a href="{{ route('pagina.show', $rand->id)}}">
         <div class="w-full h-48 bg-white rounded-lg shadow-md p-4 bg-conver bg-center" style="background-image: url({{ asset('storage/images/posts/'.$rand->image) }})"></div>
-        <h4> {{ $rand->title}}</h4>
+        </a>
+        <div class="flex items-center gap-4 pl-4 pt-2">
+            @foreach ($rand->categories as $cat)
+            <div class="text-white max-w-fit rounded ease-linear duration-300 hover:shadow-lg shadow shadow-black" style="background-color: {{ $cat->primary_color }}">
+                <a href="{{ route('pagina.category', $cat->id) }}" class="flex gap-2 px-2 py-1">
+                    <img src="{{ asset('storage/images/logos/'.$cat->logo) }}" class="max-w-6">
+                    <p class="text-sm leading-7 ">{{ $cat->name }}</p>
+                </a>
+            </div>
+            @endforeach
+            <h4 class="text-slate-500 font-bold text-lg"> {{ $rand->title}}</h4>
+        </div>
         </div>
         @endforeach
     </div>

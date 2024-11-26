@@ -39,7 +39,7 @@ class PostController extends Controller
 
         session()->flash('status','Viendo los posts');
         $randoms = Post::inRandomOrder()
-        ->where('is_published', true)->limit(4)->get();
+        ->where('is_published', true)->limit(5)->get();
         return view('home',
                     ['pagina'=>'show',
                     'grupo'=>'show',
