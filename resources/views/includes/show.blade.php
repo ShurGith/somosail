@@ -34,7 +34,7 @@
             </div>
             <h2 class="text-2xl font-bold">{{ $datos->title }}</h2>
             @if($permitido)
-            <div class="mx-auto w-full min-w-10xl bg-red-100">
+            <div class="mx-auto w-full ">
                 {!! $datos->content !!}
             @endif
         @else
@@ -50,7 +50,7 @@
     <h1 class="text-2xl font-bold mb-4">{{ __('Recomendaciones') }}</h1>
     <div class="md:max-w-4/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ">
         @foreach ($randoms as $rand )
-        <div>
+        <div class="w-full bg-red-100 min-w-96">
         <a href="{{ route('pagina.show', $rand->id)}}">
         <div class="w-full h-48 bg-white rounded-lg shadow-md p-4 bg-conver bg-center" style="background-image: url({{ asset('storage/images/posts/'.$rand->image) }})"></div>
         </a>

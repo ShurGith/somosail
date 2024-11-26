@@ -36,10 +36,10 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
-
-        session()->flash('status','Viendo los posts');
-        $randoms = Post::inRandomOrder()
-        ->where('is_published', true)->limit(5)->get();
+        $randoms = Post::where('id', '!=', $post->id)
+             ->inRandomOrder()
+             ->take(4)
+             ->get();
         return view('home',
                     ['pagina'=>'show',
                     'grupo'=>'show',
